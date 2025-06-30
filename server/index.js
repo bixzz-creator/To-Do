@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ limit: '5mb', extended: true }));
 app.use(cors({
-  origin: ['https://sharukeshtodo.netlify.app', 'http://localhost:3000'],
+  origin: ['https://sharukeshtodo.netlify.app', 'https://to-do-10z7.onrender.com'],
   credentials: true
 }));
 app.use(session({
