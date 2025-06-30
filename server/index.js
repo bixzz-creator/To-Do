@@ -89,12 +89,12 @@ app.get('/auth/google/callback', passport.authenticate('google', {
   failureRedirect: '/',
   session: true,
 }), (req, res) => {
-  res.redirect('https://to-do-10z7.onrender.com');
+  res.redirect('https://sharukeshtodo.netlify.app');
 });
 
 app.get('/auth/logout', (req, res) => {
   req.logout(() => {
-    res.redirect('https://to-do-10z7.onrender.com');
+    res.redirect('https://sharukeshtodo.netlify.app');
   });
 });
 
