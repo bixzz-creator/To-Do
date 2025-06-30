@@ -10,11 +10,15 @@ const bcrypt = require('bcrypt');
 const app = express();
 app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ limit: '5mb', extended: true }));
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'https://to-do-10z7.onrender.com', credentials: true }));
 app.use(session({
   secret: process.env.SESSION_SECRET || 'secret',
   resave: false,
   saveUninitialized: false,
+  cookie: {
+    sameSite: 'none',
+    secure: true
+  }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -82,12 +86,12 @@ app.get('/auth/google/callback', passport.authenticate('google', {
   failureRedirect: '/',
   session: true,
 }), (req, res) => {
-  res.redirect('http://localhost:3000');
+  res.redirect('https://to-do-10z7.onrender.com');
 });
 
 app.get('/auth/logout', (req, res) => {
   req.logout(() => {
-    res.redirect('http://localhost:3000');
+    res.redirect('https://to-do-10z7.onrender.com');
   });
 });
 
