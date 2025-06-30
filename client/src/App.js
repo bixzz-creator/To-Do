@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
+const API_URL = 'https://to-do-10z7.onrender.com';
+
 function App() {
   const [user, setUser] = useState(null);
   const [todos, setTodos] = useState([]);
@@ -25,7 +27,7 @@ function App() {
   const [loginError, setLoginError] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:5000/auth/user', {
+    fetch(`${API_URL}/auth/user`, {
       credentials: 'include',
     })
       .then(res => res.ok ? res.json() : null)
@@ -40,23 +42,23 @@ function App() {
   }, []);
 
   const fetchTodos = () => {
-    fetch('http://localhost:5000/api/todos', { credentials: 'include' })
+    fetch(`${API_URL}/api/todos`, { credentials: 'include' })
       .then(res => res.json())
       .then(setTodos);
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:5000/auth/google';
+    window.location.href = `${API_URL}/auth/google`;
   };
 
   const handleLogout = () => {
-    window.location.href = 'http://localhost:5000/auth/logout';
+    window.location.href = `${API_URL}/auth/logout`;
   };
 
   const addTodo = e => {
     e.preventDefault();
     if (!newTodo.trim()) return;
-    fetch('http://localhost:5000/api/todos', {
+    fetch(`${API_URL}/api/todos`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -70,7 +72,7 @@ function App() {
   };
 
   const toggleTodo = (id, completed, text) => {
-    fetch(`http://localhost:5000/api/todos/${id}`, {
+    fetch(`${API_URL}/api/todos/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -87,7 +89,7 @@ function App() {
   };
 
   const deleteTodo = id => {
-    fetch(`http://localhost:5000/api/todos/${id}`, {
+    fetch(`${API_URL}/api/todos/${id}`, {
       method: 'DELETE',
       credentials: 'include',
     })
@@ -105,7 +107,7 @@ function App() {
   };
 
   const saveEdit = (id, completed) => {
-    fetch(`http://localhost:5000/api/todos/${id}`, {
+    fetch(`${API_URL}/api/todos/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -132,7 +134,7 @@ function App() {
 
   const handleProfileSave = e => {
     e.preventDefault();
-    fetch('http://localhost:5000/api/profile', {
+    fetch(`${API_URL}/api/profile`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -172,7 +174,7 @@ function App() {
       setSignupError('Passwords do not match.');
       return;
     }
-    const res = await fetch('http://localhost:5000/api/register', {
+    const res = await fetch(`${API_URL}/api/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -199,7 +201,7 @@ function App() {
       setLoginError('Email and password required.');
       return;
     }
-    const res = await fetch('http://localhost:5000/api/login', {
+    const res = await fetch(`${API_URL}/api/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
