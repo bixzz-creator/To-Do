@@ -10,7 +10,10 @@ const bcrypt = require('bcrypt');
 const app = express();
 app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ limit: '5mb', extended: true }));
-app.use(cors({ origin: 'https://to-do-10z7.onrender.com', credentials: true }));
+app.use(cors({
+  origin: ['https://sharukeshtodo.netlify.app', 'http://localhost:3000'],
+  credentials: true
+}));
 app.use(session({
   secret: process.env.SESSION_SECRET || 'secret',
   resave: false,
