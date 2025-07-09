@@ -87,7 +87,7 @@ function App() {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = `${API_URL}/auth/google`;
+    window.location.href = 'https://to-do-10z7.onrender.com/auth/google';
   };
 
   const handleLogout = () => {
