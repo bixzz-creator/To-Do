@@ -15,14 +15,14 @@ function App() {
   const [view, setView] = useState('home');
   const [profileName, setProfileName] = useState('');
   const [showBoom, setShowBoom] = useState(false);
-  const [profileImage, setProfileImage] = useState('');
+  // const [profileImage, setProfileImage] = useState('');
   const [profileImagePreview, setProfileImagePreview] = useState('');
   const [authView, setAuthView] = useState('landing');
   const [signupEmail, setSignupEmail] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
   const [signupPassword2, setSignupPassword2] = useState('');
   const [signupName, setSignupName] = useState('');
-  const [signupPhotoPreview, setSignupPhotoPreview] = useState('');
+  // const [signupPhotoPreview, setSignupPhotoPreview] = useState('');
   const [signupError, setSignupError] = useState('');
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
@@ -30,7 +30,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState('all'); // all, active, completed
   const [showAddForm, setShowAddForm] = useState(false);
-  const [todoCategory, setTodoCategory] = useState('personal');
+  // const [todoCategory, setTodoCategory] = useState('personal');
   const [profileAge, setProfileAge] = useState('');
   const [profilePhone, setProfilePhone] = useState('');
   const [signupCaptcha, setSignupCaptcha] = useState(null);
@@ -54,7 +54,6 @@ function App() {
       .then(data => {
         setUser(data);
         setProfileName(data?.displayName || '');
-        setProfileImage(data?.photo || '');
         setProfileImagePreview('');
         setProfileAge(data?.age || '');
         setProfilePhone(data?.phoneNumber || '');
@@ -155,49 +154,49 @@ function App() {
       });
   };
 
-  const handleProfileImageChange = e => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfileImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // const handleProfileImageChange = e => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setProfileImagePreview(reader.result);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
-  const handleProfileSave = e => {
-    e.preventDefault();
-    fetch(`${API_URL}/api/profile`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({
-        displayName: profileName,
-        photoCustom: profileImagePreview || undefined,
-        age: profileAge,
-        phoneNumber: profilePhone,
-      }),
-    })
-      .then(res => res.json())
-      .then(data => {
-        setUser(u => ({ ...u, displayName: data.displayName, photo: data.photo, age: data.age, phoneNumber: data.phoneNumber }));
-        setProfileImage(data.photo);
-        setProfileImagePreview('');
-        setView('home');
-      });
-  };
+  // const handleProfileSave = e => {
+  //   e.preventDefault();
+  //   fetch(`${API_URL}/api/profile`, {
+  //     method: 'PUT',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     credentials: 'include',
+  //     body: JSON.stringify({
+  //       displayName: profileName,
+  //       photoCustom: profileImagePreview || undefined,
+  //       age: profileAge,
+  //       phoneNumber: profilePhone,
+  //     }),
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setUser(u => ({ ...u, displayName: data.displayName, photo: data.photo, age: data.age, phoneNumber: data.phoneNumber }));
+  //       setProfileImage(data.photo);
+  //       setProfileImagePreview('');
+  //       setView('home');
+  //     });
+  // };
 
-  const handleSignupPhotoChange = e => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setSignupPhotoPreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // const handleSignupPhotoChange = e => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setSignupPhotoPreview(reader.result);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const getAvatarUrl = (name) => {
     if (!name) return '';
