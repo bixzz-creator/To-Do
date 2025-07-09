@@ -6,7 +6,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 let API_URL = process.env.REACT_APP_API_URL;
 if (!API_URL) {
   if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
-    API_URL = 'http://localhost:5000';
+    API_URL = 'https://to-do-10z7.onrender.com';
   } else {
     API_URL = 'https://to-do-10z7.onrender.com';
   }
