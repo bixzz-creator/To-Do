@@ -71,7 +71,7 @@ const User = mongoose.model('User', userSchema);
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: '/auth/google/callback',
+  callbackURL: 'https://to-do-10z7.onrender.com/auth/google/callback',
 }, async (accessToken, refreshToken, profile, done) => {
   let user = await User.findOne({ googleId: profile.id });
   if (!user) {
@@ -102,7 +102,7 @@ passport.deserializeUser(async (id, done) => {
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: '/auth/github/callback'
+  callbackURL: 'https://to-do-10z7.onrender.com/auth/github/callback'
 }, async (accessToken, refreshToken, profile, done) => {
   let user = await User.findOne({ githubId: profile.id });
   if (!user) {
