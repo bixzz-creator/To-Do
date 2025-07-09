@@ -2,8 +2,15 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-// Always use localhost:5000 for API in development and production (local only)
-const API_URL = 'http://localhost:5000';
+// Use environment variable for API URL if available, otherwise auto-detect local or Render backend
+let API_URL = process.env.REACT_APP_API_URL;
+if (!API_URL) {
+  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    API_URL = 'http://localhost:5000';
+  } else {
+    API_URL = 'https://to-do-10z7.onrender.com';
+  }
+}
 
 function App() {
   const [user, setUser] = useState(null);
