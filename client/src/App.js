@@ -87,7 +87,7 @@ function App() {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = 'https://to-do-10z7.onrender.com/auth/google';
+    window.location.href = 'https://to-do-10z7.onrender.com/auth/google/callback';
   };
 
   const handleLogout = () => {
