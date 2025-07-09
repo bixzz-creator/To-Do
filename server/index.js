@@ -124,8 +124,8 @@ passport.use(new GitHubStrategy({
 // Auth routes
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-// Remove all deployment URLs and only use local frontend for redirects
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
+// Use deployed Netlify site as default frontend URL for redirects
+const FRONTEND_URL = process.env.FRONTEND_URL || 'https://sharukeshtodo.netlify.app';
 app.get('/auth/google/callback', passport.authenticate('google', {
   failureRedirect: '/',
   session: true,
