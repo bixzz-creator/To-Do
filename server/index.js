@@ -15,7 +15,7 @@ app.use(express.urlencoded({ limit: '5mb', extended: true }));
 const allowedOrigins = [
   'http://localhost:3000',
   'http://127.0.0.1:3000',
-  'https://sharukeshtodo.netlify.app/', // Replace with your actual Netlify URL
+  'https://sharukeshtodo.netlify.app', // Replace with your actual Netlify URL
 ];
 app.use(cors({
   origin: (origin, callback) => {
