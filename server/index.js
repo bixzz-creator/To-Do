@@ -13,8 +13,7 @@ app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ limit: '5mb', extended: true }));
 // CORS: only allow localhost for local development
 const allowedOrigins = [
-  'http://localhost:3000',
-  'http://127.0.0.1:3000',
+  
   'https://sharukeshtodo.netlify.app', // Replace with your actual Netlify URL
 ];
 app.use(cors({
